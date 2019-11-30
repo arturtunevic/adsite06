@@ -1,25 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version - 2.6.3
 
-Things you may want to cover:
+* Rails version - 6.0.1
 
-* Ruby version
+* Node.js version - 13.2.0
 
-* System dependencies
+* MySQL database
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-"# adsite06" 
