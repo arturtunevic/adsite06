@@ -1,0 +1,12 @@
+<% if session[:guest_user_id] != nil %>
+  <h3 class="greeting">Hello guest user</h3>
+  <%= button_to "Log out from guest user", delete_guest_session_path, method: :delete %>
+<% elsif user_signed_in? %>
+  <h3 class="greeting">Hello <%= current_user.email %></h3>
+  <%= render "ad/menu" %>
+<% end %>
+<div class="main-ads-list">
+  <% @ads.each do |ad| %>
+    <%= link_to ad.name, show_ad_path(ad.id) %>
+  <% end %>
+</div>
