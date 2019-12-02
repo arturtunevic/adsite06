@@ -1,0 +1,46 @@
+<h1>My ads</h1>
+<%= link_to "Main page", root_path %>
+<details>
+  <summary>Create new ad</summary>
+  <%= form_tag(create_ad_path, method: :post) do %>
+    <%= label_tag(:name, "Name") %>
+    <%= text_field_tag(:name) %>
+    <%= label_tag(:name, "Model") %>
+    <%= text_field_tag(:model) %>
+    <%= label_tag(:name, "Mileage") %>
+    <%= text_field_tag(:mileage) %>
+    <%= label_tag(:name, "Horsepower") %>
+    <%= text_field_tag(:horsepower) %>
+    <%= label_tag(:name, "Fuel") %>
+    <%= text_field_tag(:fuel) %>
+    <%= label_tag(:name, "Gearbox") %>
+    <%= text_field_tag(:gearbox) %>
+    <%= label_tag(:name, "Price") %>
+    <%= text_field_tag(:price) %>
+    <%= submit_tag("Create") %>
+  <% end %>
+</details>
+
+<% @user_ads.each do |ad| %>
+  <details>
+    <summary><%= ad.name %></summary>
+    <%= form_tag(update_ad_path(ad.id), method: :put) do %>
+      <%= label_tag(:name, "Name") %>
+      <%= text_field_tag(:name, ad.name) %>
+      <%= label_tag(:name, "Model") %>
+      <%= text_field_tag(:model, ad.model) %>
+      <%= label_tag(:name, "Mileage") %>
+      <%= text_field_tag(:mileage, ad.mileage) %>
+      <%= label_tag(:name, "Horsepower") %>
+      <%= text_field_tag(:horsepower, ad.horsepower) %>
+      <%= label_tag(:name, "Fuel") %>
+      <%= text_field_tag(:fuel, ad.fuel) %>
+      <%= label_tag(:name, "Gearbox") %>
+      <%= text_field_tag(:gearbox, ad.gearbox) %>
+      <%= label_tag(:name, "Price") %>
+      <%= text_field_tag(:price, ad.price) %>
+      <%= submit_tag("Update") %>
+    <% end %>
+  </details>
+  <%= button_to "Delete", delete_ad_path(ad.id), method: :delete %>
+<% end %>

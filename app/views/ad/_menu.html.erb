@@ -1,0 +1,5 @@
+<%= button_to "Logout", destroy_user_session_path, method: :delete %>
+<nav>
+  <%= link_to "My ads", my_ads_path(current_user) %>
+  <%= link_to "Edit User information", edit_user_registration_path %>
+</nav>
