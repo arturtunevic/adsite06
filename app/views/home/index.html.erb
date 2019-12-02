@@ -5,6 +5,13 @@
   <h3 class="greeting">Hello <%= current_user.email %></h3>
   <%= render "ad/menu" %>
 <% end %>
+
+<%= form_tag(search_path, method: :get) do %>
+  <%= label_tag(:search_model, "Search by model") %>
+  <%= text_field_tag(:search_model) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
 <div class="main-ads-list">
   <% @ads.each do |ad| %>
     <%= link_to ad.name, show_ad_path(ad.id) %>
