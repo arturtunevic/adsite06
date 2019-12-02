@@ -1,0 +1,6 @@
+<div class="main-ads-list">
+  <% @found_ads.each do |ad| %>
+    <%= link_to ad.name, show_ad_path(ad.id) %>
+  <% end %>
+</div>
+<%= link_to "Main page", root_path %>

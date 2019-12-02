@@ -1,14 +1,23 @@
 class AdController < ApplicationController
   before_action :authenticate_user!, unless: :guest_user
 
+  def search
+    @found_ads = Ad.where(model: params[:search_model])
+  end
+
   def show
     @ad = Ad.find(params[:id])
   end
 
   def create
     @ad = current_user.ads.build(name: params[:name], model: params[:model], mileage: params[:mileage], horsepower: params[:horsepower], fuel: params[:fuel], gearbox: params[:gearbox], price: params[:price])
-    @ad.save
-    redirect_back fallback_location: root_path
+    if @ad.save
+      redirect_back fallback_location: root_path
+    else
+      redirect_back fallback_location: root_path
+      flash[:title] = "Error"
+      flash[:alert] = @ad.errors.full_messages.join(", ")
+    end
   end
 
   def update
