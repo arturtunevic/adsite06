@@ -8,22 +8,22 @@
 <div class="wrapper-for-button">
 <details class="ad-action">
   <summary>Create new ad</summary>
-  <%= form_tag(create_ad_path, method: :post) do %>
-    <%= label_tag(:name, "Name") %>
-    <%= text_field_tag(:name) %>
-    <%= label_tag(:name, "Model") %>
-    <%= select_tag :model, raw("<option>BMW</option><option>Audi</option><option>Mercedes-Benz</option>") %>
-    <%= label_tag(:name, "Mileage") %>
-    <%= text_field_tag(:mileage) %>
-    <%= label_tag(:name, "Horsepower") %>
-    <%= text_field_tag(:horsepower) %>
-    <%= label_tag(:name, "Fuel") %>
-    <%= select_tag :fuel, raw("<option>Petrol</option><option>Diesel</option>") %>
-    <%= label_tag(:name, "Gearbox") %>
-    <%= select_tag :gearbox, raw("<option>Manual</option><option>Automatic</option>") %>
-    <%= label_tag(:name, "Price") %>
-    <%= text_field_tag(:price) %>
-    <%= submit_tag("Create") %>
+  <%= form_for(:ad, url: create_ad_path, method: :post) do |f| %>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+    <%= f.label :model, "Model" %>
+    <%= f.select :model, raw("<option>BMW</option><option>Audi</option><option>Mercedes-Benz</option>") %>
+    <%= f.label :mileage, "Mileage" %>
+    <%= f.text_field :mileage %>
+    <%= f.label :horsepower, "Horsepower" %>
+    <%= f.text_field :horsepower %>
+    <%= f.label :fuel, "Fuel" %>
+    <%= f.select :fuel, raw("<option>Petrol</option><option>Diesel</option>") %>
+    <%= f.label :gearbox, "Gearbox" %>
+    <%= f.select :gearbox, raw("<option>Manual</option><option>Automatic</option>") %>
+    <%= f.label :price, "Price" %>
+    <%= f.text_field :price %>
+    <%= f.submit "Create" %>
   <% end %>
 </details>
 </div>
@@ -33,22 +33,22 @@
 <div class="wrapper-for-button">
   <details class="ad-action">
     <summary><%= ad.name %> <%= button_to "Delete", delete_ad_path(ad.id), method: :delete, class: "btn btn-danger" %></summary>
-    <%= form_tag(update_ad_path(ad.id), method: :put) do %>
-      <%= label_tag(:name, "Name") %>
-      <%= text_field_tag(:name, ad.name) %>
-      <%= label_tag(:name, "Model") %>
-      <%= select_tag :model, options_for_select([ "BMW", "Audi", "Mercedes-Benz" ], ad.model) %>
-      <%= label_tag(:name, "Mileage") %>
-      <%= text_field_tag(:mileage, ad.mileage) %>
-      <%= label_tag(:name, "Horsepower") %>
-      <%= text_field_tag(:horsepower, ad.horsepower) %>
-      <%= label_tag(:name, "Fuel") %>
-      <%= select_tag :fuel, options_for_select([ "Diesel", "Petrol" ], ad.fuel) %>
-      <%= label_tag(:name, "Gearbox") %>
-      <%= select_tag :gearbox, options_for_select([ "Manual", "Automatic" ], ad.fuel) %>
-      <%= label_tag(:name, "Price") %>
-      <%= text_field_tag(:price, ad.price) %>
-      <%= submit_tag("Update") %>
+    <%= form_for(:ad, url: update_ad_path(ad.id), method: :put) do |f| %>
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name, value: ad.name %>
+      <%= f.label :model, "Model" %>
+      <%= f.select :model, options_for_select([ "BMW", "Audi", "Mercedes-Benz" ], ad.model) %>
+      <%= f.label :mileage, "Mileage" %>
+      <%= f.text_field :mileage, value: ad.mileage %>
+      <%= f.label :horsepower, "Horsepower" %>
+      <%= f.text_field :horsepower, value: ad.horsepower %>
+      <%= f.label :fuel, "Fuel" %>
+      <%= f.select :fuel, options_for_select([ "Diesel", "Petrol" ], ad.fuel) %>
+      <%= f.label :gearbox, "Gearbox" %>
+      <%= f.select :gearbox, options_for_select([ "Manual", "Automatic" ], ad.gearbox) %>
+      <%= f.label :price, "Price" %>
+      <%= f.text_field :price, value: ad.price %>
+      <%= f.submit "Update" %>
     <% end %>
   </details>
 </div>

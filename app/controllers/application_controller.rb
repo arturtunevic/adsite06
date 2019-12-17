@@ -1,7 +1,9 @@
-class ApplicationController < ActionController::Base
+# frozen_string_literal: true
 
+# Base controller
+class ApplicationController < ActionController::Base
   def guest_user
-    if session[:guest_user_id] != nil
+    if !session[:guest_user_id].nil?
       true
     else
       false
@@ -21,5 +23,4 @@ class ApplicationController < ActionController::Base
     session[:guest_user_id] = nil
     redirect_to root_path
   end
-
 end

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Ad model
 class Ad < ApplicationRecord
   belongs_to :user, dependent: :destroy
 
