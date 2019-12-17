@@ -1,0 +1,16 @@
+require: rubocop-rails
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 15
+
+AllCops:
+  Exclude:
+    - 'bin/bundle'
+    - 'config/environments/development.rb'
+    - 'config/initializers/devise.rb'
+    - 'db/schema.rb'
+    - 'test/channels/application_cable/connection_test.rb'
+    - 'test/test_helper.rb'

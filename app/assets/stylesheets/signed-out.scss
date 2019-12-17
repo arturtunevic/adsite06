@@ -1,0 +1,37 @@
+.signed-out {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  h2 {
+    font-weight: bold;
+  }
+  form {
+    width: 25%;
+    .actions {
+      text-align: center;
+    }
+    input {
+      margin-bottom: 15px;
+      border-radius: 6px;
+    }
+    input:not(.btn):not(#user_remember_me) {
+      width: 100%;
+      border: none;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
+      padding-left: 5px;
+    }
+    label, i {
+      padding-bottom: 5px;
+    }
+    .btn {
+      margin-top: 10px;
+      min-width: 140px;
+    }
+  }
+  .button_to {
+    text-align: center;
+  }
+}
