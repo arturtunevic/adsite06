@@ -1,9 +1,45 @@
 header {
-  height: 80px;
+  height: 180px;
   display: flex;
   justify-content: center;
   align-items: center;
   h1 {
-    font-size: 60px;
+    font-size: 90px;
+    font-weight: bold;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  }
+}
+
+.navbar.navbar-light {
+  background-color: rgba(255,255,255,0.6) !important;
+  .navbar-brand {
+    font-size: 30px;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    font-weight: 700;
+  }
+  .navbar-nav {
+    .nav-item {
+      .nav-link {
+        color: #606060;
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .admin-link {
+        color: #ff6347;
+      }
+      form {
+        height: 100%;
+        .nav-link {
+          height: 100%;
+          background: transparent;
+          border: none;
+          font-size: 18px;
+          font-weight: 700;
+          color: #606060;
+        }
+      }
+    }
   }
 }

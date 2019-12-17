@@ -1,6 +1,17 @@
-<div class="main-ads-list">
-  <% @found_ads.each do |ad| %>
-    <%= link_to ad.name, show_ad_path(ad.id) %>
-  <% end %>
+<% if session[:guest_user_id] != nil %>
+  <%= render "layouts/nav_guest" %>
+<% elsif user_signed_in? %>
+  <%= render "layouts/nav" %>
+<% end %>
+
+<div class="found-ads-list">
+<% if @found_ads.count == 0 %>
+  <h2>There are no ads with this model name, try again</h2>
+<% else %>
+  <h2>Number of ads found by search: <%= @found_ads.count %></h2>
+<% @found_ads.each do |ad| %>
+  <%= link_to ad.name, show_ad_path(ad.id), class: "item" %>
+<% end %>
+<% end%>
+<%= link_to "Back", :back %>
 </div>
-<%= link_to "Main page", root_path %>

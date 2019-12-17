@@ -1,9 +1,130 @@
-nav {
-  a {
+.main-ads-list {
+  width: 40%;
+  margin: 10px auto 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  .item-main {
+    font-weight: 700;
+    color: #e8e8e8;
+    text-align: center;
+  }
+}
+
+.ad-actions {
+  padding-left: 40px;
+  padding-top: 40px;
+  position: relative;
+  margin-bottom: 80px;
+  h1 {
+    color: #fff;
+    font-weight: 700;
+    font-size: 45px;
+    margin-bottom: 30px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+  }
+  h3 {
+    color: #fff;
+    font-weight: 700;
+    font-size: 28px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+  }
+  .wrapper-for-button {
+    width: 25%;
+    .button_to {
+      display: inline-block;
+      .btn {
+        padding: 3px 10px;
+        margin-left: 5px;
+      }
+    }
+  }
+  .ad-action {
+    color: rgba(255,255,255,0.85);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    width: 100%;
+    &:hover {
+      color: rgba(255,255,255,0.95);
+    }
+    summary {
+      &::-webkit-details-marker {
+        display: none;
+      }
+    }
+    form {
+      label, input {
+        display: block;
+      }
+      label {
+        margin-top: 5px;
+        font-size: 18px;
+        font-weight: 600;
+      }
+      input:not(.btn), select {
+        margin-bottom: 8px;
+        font-size: 15px;
+        padding: 2px 0 2px 5px;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        &:last-of-type:not(select) {
+          margin-top: 25px;
+          margin-bottom: 25px;
+          &:hover {
+            background-color: rgb(86,86,86);
+            color: white;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    &:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
+}
+
+.ad-info {
+  padding-left: 40px;
+  padding-top: 40px;
+  margin-bottom: 80px;
+  h1 {
+    color: #fff;
+    font-weight: 700;
+    font-size: 45px;
+    margin-bottom: 30px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+  }
+  h4 {
+    color: #fff;
+    font-weight: 700;
+    font-size: 22px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+  }
+}
+
+.found-ads-list {
+  padding-left: 40px;
+  padding-top: 40px;
+  margin-bottom: 80px;
+  h2 {
+    font-weight: 700;
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 25px;
+  }
+  .item {
     display: block;
-    margin: 15px 0;
-    font-size: 18px;
-    text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
+    color: #e8e8e8;
+    font-size: 24px;
+    margin-bottom: 10px;
   }
 }

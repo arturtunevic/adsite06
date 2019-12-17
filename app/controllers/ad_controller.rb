@@ -22,8 +22,14 @@ class AdController < ApplicationController
 
   def update
     @ad = Ad.find(params[:id])
-    Ad.update(@ad.id, name: params[:name], model: params[:model], mileage: params[:mileage], horsepower: params[:horsepower], fuel: params[:fuel], gearbox: params[:gearbox], price: params[:price])
-    redirect_back fallback_location: root_path
+    @ad.update(name: params[:name], model: params[:model], mileage: params[:mileage], horsepower: params[:horsepower], fuel: params[:fuel], gearbox: params[:gearbox], price: params[:price])
+    if @ad.errors.count == 0
+      redirect_back fallback_location: root_path
+    else
+      redirect_back fallback_location: root_path
+      flash[:title] = "Error"
+      flash[:alert] = @ad.errors.full_messages.join(", ")
+    end
   end
 
   def delete

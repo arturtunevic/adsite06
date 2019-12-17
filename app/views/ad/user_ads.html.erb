@@ -1,46 +1,56 @@
+<% if user_signed_in? %>
+  <%= render "layouts/nav" %>
+<% end %>
+
+<div class="ad-actions">
+<p class="alert"><%= alert %></p>
 <h1>My ads</h1>
-<%= link_to "Main page", root_path %>
-<details>
+<div class="wrapper-for-button">
+<details class="ad-action">
   <summary>Create new ad</summary>
   <%= form_tag(create_ad_path, method: :post) do %>
     <%= label_tag(:name, "Name") %>
     <%= text_field_tag(:name) %>
     <%= label_tag(:name, "Model") %>
-    <%= text_field_tag(:model) %>
+    <%= select_tag :model, raw("<option>BMW</option><option>Audi</option><option>Mercedes-Benz</option>") %>
     <%= label_tag(:name, "Mileage") %>
     <%= text_field_tag(:mileage) %>
     <%= label_tag(:name, "Horsepower") %>
     <%= text_field_tag(:horsepower) %>
     <%= label_tag(:name, "Fuel") %>
-    <%= text_field_tag(:fuel) %>
+    <%= select_tag :fuel, raw("<option>Petrol</option><option>Diesel</option>") %>
     <%= label_tag(:name, "Gearbox") %>
-    <%= text_field_tag(:gearbox) %>
+    <%= select_tag :gearbox, raw("<option>Manual</option><option>Automatic</option>") %>
     <%= label_tag(:name, "Price") %>
     <%= text_field_tag(:price) %>
     <%= submit_tag("Create") %>
   <% end %>
 </details>
+</div>
 
+<h3>Edit ads</h3>
 <% @user_ads.each do |ad| %>
-  <details>
-    <summary><%= ad.name %></summary>
+<div class="wrapper-for-button">
+  <details class="ad-action">
+    <summary><%= ad.name %> <%= button_to "Delete", delete_ad_path(ad.id), method: :delete, class: "btn btn-danger" %></summary>
     <%= form_tag(update_ad_path(ad.id), method: :put) do %>
       <%= label_tag(:name, "Name") %>
       <%= text_field_tag(:name, ad.name) %>
       <%= label_tag(:name, "Model") %>
-      <%= text_field_tag(:model, ad.model) %>
+      <%= select_tag :model, options_for_select([ "BMW", "Audi", "Mercedes-Benz" ], ad.model) %>
       <%= label_tag(:name, "Mileage") %>
       <%= text_field_tag(:mileage, ad.mileage) %>
       <%= label_tag(:name, "Horsepower") %>
       <%= text_field_tag(:horsepower, ad.horsepower) %>
       <%= label_tag(:name, "Fuel") %>
-      <%= text_field_tag(:fuel, ad.fuel) %>
+      <%= select_tag :fuel, options_for_select([ "Diesel", "Petrol" ], ad.fuel) %>
       <%= label_tag(:name, "Gearbox") %>
-      <%= text_field_tag(:gearbox, ad.gearbox) %>
+      <%= select_tag :gearbox, options_for_select([ "Manual", "Automatic" ], ad.fuel) %>
       <%= label_tag(:name, "Price") %>
       <%= text_field_tag(:price, ad.price) %>
       <%= submit_tag("Update") %>
     <% end %>
   </details>
-  <%= button_to "Delete", delete_ad_path(ad.id), method: :delete %>
+</div>
 <% end %>
+</div>

@@ -1,2 +1,17 @@
-<h1>show page <%= @ad.name %></h1>
-<%= link_to "Main page", root_path %>
+<% if session[:guest_user_id] != nil %>
+  <%= render "layouts/nav_guest" %>
+<% elsif user_signed_in? %>
+  <%= render "layouts/nav" %>
+<% end %>
+
+<div class="ad-info">
+  <h1>Ad info</h1>
+  <h4>Name: <%= @ad.name %></h4>
+  <h4>Model: <%= @ad.model %></h4>
+  <h4>Mileage: <%= @ad.mileage %> km</h4>
+  <h4>Horsepower: <%= @ad.horsepower %></h4>
+  <h4>Fuel: <%= @ad.fuel %></h4>
+  <h4>Gearbox: <%= @ad.gearbox %></h4>
+  <h4>Price <%= @ad.price %> eur</h4>
+  <%= link_to "Back", :back %>
+</div>

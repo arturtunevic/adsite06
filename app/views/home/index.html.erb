@@ -1,19 +1,25 @@
 <% if session[:guest_user_id] != nil %>
-  <h3 class="greeting">Hello guest user</h3>
-  <%= button_to "Log out from guest user", delete_guest_session_path, method: :delete %>
+  <%= render "layouts/nav_guest" %>
 <% elsif user_signed_in? %>
-  <h3 class="greeting">Hello <%= current_user.email %></h3>
-  <%= render "ad/menu" %>
+  <%= render "layouts/nav" %>
 <% end %>
 
-<%= form_tag(search_path, method: :get) do %>
-  <%= label_tag(:search_model, "Search by model") %>
-  <%= text_field_tag(:search_model) %>
-  <%= submit_tag("Search") %>
-<% end %>
-
-<div class="main-ads-list">
-  <% @ads.each do |ad| %>
-    <%= link_to ad.name, show_ad_path(ad.id) %>
+<main>
+  <% if user_signed_in? %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   <% end %>
-</div>
+
+  <%= form_tag(search_path, method: :get) do %>
+    <%= label_tag(:search_model, "Search by model") %>
+    <%= select_tag :search_model, raw("<option>BMW</option><option>Audi</option><option>Mercedes-Benz</option>") %>
+    <%= submit_tag("Search", class: "submit btn btn-info") %>
+  <% end %>
+
+  <h2>All ads list</h2>
+  <div class="main-ads-list">
+    <% @ads.each do |ad| %>
+      <%= link_to ad.name, show_ad_path(ad.id), class: "item-main" %>
+    <% end %>
+  </div>
+</main>
